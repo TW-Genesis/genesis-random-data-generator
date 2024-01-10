@@ -1,0 +1,7 @@
+.idea
+.gradle
+build
+bin
+output/
+.DS_Store
+dumpData.zsh

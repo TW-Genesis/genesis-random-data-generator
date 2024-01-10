@@ -1,0 +1,12 @@
+version: '1.0'
+services:
+  data-gen:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: data-gen
+  genesis-data-generator:
+    build:
+      context: .
+      dockerfile: aws-Dockerfile
+    image: genesis-data-generator

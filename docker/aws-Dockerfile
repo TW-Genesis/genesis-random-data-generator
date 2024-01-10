@@ -1,0 +1,3 @@
+FROM public.ecr.aws/lambda/java:11
+COPY data-generator-1.0-SNAPSHOT-all.jar data-generator-1.0-SNAPSHOT-all.jar
+ENTRYPOINT ["java","-jar","data-generator-1.0-SNAPSHOT-all.jar","-ec","10"]

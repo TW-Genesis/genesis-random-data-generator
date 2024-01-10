@@ -1,0 +1,14 @@
+yeast:
+  id: "strain-id"
+  sequenced-and-annotated: False
+  parent-strain: "parent-strain-id"
+  modifications:
+    - type: "deletion"
+      name: "ZWF1"
+      gene: "gene-id-1"
+      coordinates: "cvrXIV:197943..196426"
+    - type: "insertion"
+      name: "G6PDH"
+      gene: "gene-id-1"
+      coordinates: "plasmid, non-integrative"
+      description: "ZWF1 which codes for yeast glucose-6-phosphate dehydrogenase was ko'd and a plasmid coding for human G6PDH was inserted."

@@ -1,0 +1,34 @@
+regime:
+  iriPrefix: "http://project-genesis.io/ontology#Regime"
+  dictionarySize: 100
+  temperature:
+    min: 20.0
+    max: 50.0
+  flowRate:
+    min: 45.0
+    max: 60.0
+  growthMediumComposition:
+    minNumberOfConstituents: 3
+    maxNumberOfConstituents: 5
+    minimumConcentrationPerConstituent: 0.5
+    maximumConcentrationPerConstituent: 8
+experimentDesign:
+  noOfRegimes:
+    min: 2
+    max: 5
+  samplesTakenPerRegime:
+    min: 1
+    max: 2
+  cellCulturing:
+    duration:
+      min: 30
+      max: 70
+
+strain:
+  dictionarySize: 100
+
+transcriptomics:
+  geneCount:
+    min: 0
+    max: 300000
+

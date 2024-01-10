@@ -1,0 +1,93 @@
+cell-culturing-process:
+  id: "culturing-process-id"
+  duration:
+    start: 2022-03-21T05:01:57+00:00
+    end: 2022-03-22T06:08:07+00:00
+  strain: "strain-id"
+  static-reactor-parameters:
+    working-volume:
+      value: 5
+      unit: "mL"
+  sequenced-experimental-regimes:
+    - duration:
+        value: 2
+        unit: "hours"
+      parameters:
+        temperature:
+          value: 32
+          unit: "Celsius"
+        stir-rate:
+          value: 180
+          unit: "rpm"
+        growth-media:
+          defined: True
+          flow-rate:
+            value: 1
+            unit: "mL/hour"
+          constituents:
+            - chemical-id: "chemical-a-id"
+              concentration:
+                value: 5
+                units: "g/L"
+            - chemical-id: "chemical-b-id"
+              concentration:
+                value: 2
+                units: "g/L"
+            - chemical-id: "chemical-c-id"
+              concentration:
+                value: 6
+                units: "g/L"
+            - chemical-id: "chemical-d-id"
+              concentration:
+                value: 3
+                units: "g/L"
+      samples:
+        - id: "sample1-id"
+          sampling-time: 234 #sampling time in seconds for now, the actual unit is yet to discuss. It is the relative time from start of the regime.
+          sampling-volume:
+            value: 10
+            units: "mL"
+        - id: "sample2-id"
+          sampling-time: 456 #sampling time in seconds for now, the actual unit is yet to discuss. It is the relative time from start of the regime.
+          sampling-volume:
+            value: 8
+            units: "mL"
+
+    - duration:
+        value: 3
+        unit: "hours"
+      parameters:
+        temperature:
+          value: 25
+          unit: "Celsius"
+        stir-rate:
+          value: 150
+          unit: "rpm"
+        growth-media:
+          defined: True
+          flow-rate:
+            value: 1
+            unit: "mL/hour"
+          constituents:
+            - chemical-id: "chemical-x-id"
+              concentration:
+                value: 5
+                units: "g/L"
+            - chemical-id: "chemical-y-id"
+              concentration:
+                value: 2
+                units: "g/L"
+            - chemical-id: "chemical-z-id"
+              concentration:
+                value: 6
+                units: "g/L"
+            - chemical-id: "chemical-w-id"
+              concentration:
+                value: 3
+                units: "g/L"
+      samples:
+        - id: "sample-id"
+          sampling-time: 2345
+          sampling-volume:
+            value: 20
+            units: "mL"
