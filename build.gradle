@@ -34,7 +34,7 @@ dependencies {
 }
 
 javafx {
-    version = '14'
+    version = '17'
     modules = [ 'javafx.base' ]
 }
 
