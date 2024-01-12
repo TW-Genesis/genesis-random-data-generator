@@ -16,8 +16,8 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFList;
 import org.apache.jena.rdf.model.Resource;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -37,7 +37,7 @@ public class ExperimentGenerator {
 
     public ExperimentGenerator(OntModel ontology, Model regimeDictionary) throws IOException {
 
-        File experimentConfigfile = new File(Objects.requireNonNull(ExperimentGenerator.class.getClassLoader().getResource("config.yaml")).getFile());
+        InputStream experimentConfigfile = Objects.requireNonNull(ExperimentGenerator.class.getClassLoader().getResourceAsStream("config.yaml"));
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
         experimentConfig = objectMapper.readValue(experimentConfigfile, ExperimentConfig.class);
         strainDictionary = new StrainDictionary(experimentConfig.getStrain().getDictionarySize());

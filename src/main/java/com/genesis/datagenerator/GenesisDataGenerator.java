@@ -1,7 +1,5 @@
 package com.genesis.datagenerator;
 
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.genesis.datagenerator.Configuration.ExperimentConfig;
@@ -14,16 +12,11 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.io.FileUtils;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
-import org.apache.jena.ontology.OntResource;
 import org.apache.jena.rdf.model.*;
-import org.apache.jena.rdf.model.impl.PropertyImpl;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class GenesisDataGenerator {
@@ -37,8 +30,8 @@ public class GenesisDataGenerator {
         cleanOutputDirectory();
 
         OntModel baseOntology = ModelFactory.createOntologyModel();
-        String ontologyFileUrl = "file://" + Objects.requireNonNull(ExperimentGenerator.class.getClassLoader().getResource("genesis.owl")).getPath();
-        baseOntology.read(ontologyFileUrl, "TTL");
+        InputStream ontologyResource = Objects.requireNonNull(ExperimentGenerator.class.getClassLoader().getResourceAsStream("genesis.owl"));
+        baseOntology.read(ontologyResource,null, "TTL");
         OntModel ontology = modifyOntology(baseOntology);
         Model regimeDictionary = new RegeimeGenerator(ontology).generate();
         ExperimentGenerator experimentGenerator = new ExperimentGenerator(ontology, regimeDictionary);
@@ -62,7 +55,7 @@ public class GenesisDataGenerator {
     private static OntModel modifyOntology(OntModel baseOntology) throws IOException {
         ModelBuilder modelBuilder = new ModelBuilder(baseOntology);
 
-        File experimentConfigfile = new File(Objects.requireNonNull(ExperimentGenerator.class.getClassLoader().getResource("config.yaml")).getFile());
+        InputStream experimentConfigfile = Objects.requireNonNull(ExperimentGenerator.class.getClassLoader().getResourceAsStream("config.yaml"));
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
         ExperimentConfig experimentConfig = objectMapper.readValue(experimentConfigfile, ExperimentConfig.class);
         StrainDictionary strainDictionary =  new StrainDictionary(experimentConfig.getStrain().getDictionarySize());

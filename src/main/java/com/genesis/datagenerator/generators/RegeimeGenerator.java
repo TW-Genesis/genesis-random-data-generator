@@ -12,8 +12,8 @@ import org.apache.jena.ontology.OntModel;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,7 +26,7 @@ public class RegeimeGenerator {
     private final OntModel ontology;
 
     public RegeimeGenerator(OntModel ontology) throws IOException {
-        File experimentConfigfile = new File(Objects.requireNonNull(ExperimentGenerator.class.getClassLoader().getResource("config.yaml")).getFile());
+        InputStream experimentConfigfile = Objects.requireNonNull(ExperimentGenerator.class.getClassLoader().getResourceAsStream("config.yaml"));
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
         experimentConfig = objectMapper.readValue(experimentConfigfile, ExperimentConfig.class);
 
