@@ -33,7 +33,6 @@ public class MetaboliteDictionary {
                 metabolites.add(new Metabolite(metaboliteId, metaboliteName, exactMass));
             });
 
-            System.out.println("metabolites dictionary with " + metabolites.size());
         } catch (IOException e) {
             System.err.println(e.getMessage());
             System.exit(-1);

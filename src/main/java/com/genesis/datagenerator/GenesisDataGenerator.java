@@ -142,7 +142,6 @@ public class GenesisDataGenerator {
     }
 
     private static void exportModelToFile(OntModel ontModel, String filename) {
-        System.out.println("exporting to file");
         FileOutputStream fileOutputStream;
         try {
             fileOutputStream = new FileOutputStream(filename);
